@@ -178,10 +178,11 @@ export const projects = {
   label: { fr: 'Réalisations', en: 'Work' },
   title: { fr: 'Des projets *livrés*, pas seulement imaginés.', en: 'Projects *shipped*, not just imagined.' },
   intro: {
-    fr: 'Du cadre académique à mes propres produits : chaque projet m’a appris quelque chose de précis, et je le montre.',
-    en: 'From academic work to my own products: every project taught me something specific, and I show it.',
+    fr: 'Du cadre académique à mes propres produits, jusqu’aux entreprises accompagnées par ORYVO : chaque projet m’a appris quelque chose de précis.',
+    en: 'From academic work to my own products and the companies ORYVO supports: every project taught me something specific.',
   },
   single: {
+    client: { fr: 'Client ORYVO', en: 'ORYVO client' },
     academic: { fr: 'Académique', en: 'Academic' },
     personal: { fr: 'Personnel', en: 'Personal' },
   },
@@ -189,10 +190,12 @@ export const projects = {
     all: { fr: 'Tous', en: 'All' },
     academic: { fr: 'Académiques', en: 'Academic' },
     personal: { fr: 'Personnels', en: 'Personal' },
+    client: { fr: 'Clients ORYVO', en: 'ORYVO clients' },
   },
   labels: {
     featured: { fr: 'À la une', en: 'Featured' },
     open: { fr: 'Voir la fiche', en: 'View details' },
+    visit: { fr: 'Visiter le site', en: 'Visit the site' },
     demo: { fr: 'Voir la démo', en: 'Watch demo' },
     live: { fr: 'Voir en ligne', en: 'Live site' },
     code: { fr: 'Code source', en: 'Source code' },
@@ -413,6 +416,29 @@ export const projects = {
       image: '/projets/jackmyiphone.jpg',
       video: '/projets/jackmyiphone.mp4',
       link: '',
+      repo: '',
+    },
+
+    // ───────────── CLIENTS ACCOMPAGNÉS PAR ORYVO ─────────────
+    // direct: true → un clic sur la carte ouvre directement le site du client.
+    {
+      id: 'iabluck',
+      category: 'client',
+      direct: true,
+      title: 'IA BLUCK',
+      org: 'Construire écologiquement',
+      tagline: { fr: 'Construction écologique & durable', en: 'Ecological & sustainable construction' },
+      type: { fr: 'Entreprise accompagnée par ORYVO', en: 'Company supported by ORYVO' },
+      status: { fr: 'En ligne', en: 'Live' },
+      badge: { fr: 'Accompagné par ORYVO', en: 'Supported by ORYVO' },
+      summary: {
+        fr: 'Entreprise de construction écologique, accompagnée par ORYVO dans son développement digital : une présence en ligne à l’image de son engagement pour des constructions durables.',
+        en: 'Ecological construction company, supported by ORYVO in its digital development: an online presence that reflects its commitment to sustainable building.',
+      },
+      tags: ['Construction', 'Éco-responsable', 'ORYVO'],
+      image: '/projets/iabluck.jpg',
+      link: 'https://www.liabluck.com',
+      linkLabel: { fr: 'Visiter le site', en: 'Visit the site' },
       repo: '',
     },
   ],

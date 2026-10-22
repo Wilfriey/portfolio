@@ -8,7 +8,7 @@ import Reveal from './Reveal'
 import Rich from './Rich'
 import SpotCard from './SpotCard'
 
-const TABS = ['all', 'academic', 'personal']
+const TABS = ['all', 'academic', 'personal', 'client']
 
 // Image + aperçu vidéo muet qui se charge seulement quand `play` est vrai.
 function Media({ p, play, hint }) {
@@ -24,13 +24,25 @@ function Media({ p, play, hint }) {
   )
 }
 
+// Média cliquable : ouvre la fiche, ou directement le site si p.direct.
+function MediaTrigger({ p, className, onOpen, labels, children, innerRef, ...rest }) {
+  if (p.direct && p.link) {
+    return <a ref={innerRef} className={className} href={p.link} target="_blank" rel="noopener noreferrer" data-cursor={labels.visit} {...rest}>{children}</a>
+  }
+  return <button ref={innerRef} className={className} onClick={() => onOpen(p)} data-cursor={p.video ? labels.demo : labels.open} {...rest}>{children}</button>
+}
+
 function Actions({ p, labels, onOpen }) {
   return (
     <div className="pc-actions">
-      <button className="btn lime sm" onClick={() => onOpen(p)}>
-        <Icon name={p.video ? 'play' : 'arrow'} size={16} /> {p.video ? labels.demo : labels.open}
-      </button>
-      {p.link && <a className="btn ghost sm" href={p.link} target="_blank" rel="noreferrer"><Icon name="external" size={16} /> {labels.live}</a>}
+      {p.direct && p.link ? (
+        <a className="btn lime sm" href={p.link} target="_blank" rel="noopener noreferrer"><Icon name="external" size={16} /> {p.linkLabel || labels.visit}</a>
+      ) : (
+        <button className="btn lime sm" onClick={() => onOpen(p)}>
+          <Icon name={p.video ? 'play' : 'arrow'} size={16} /> {p.video ? labels.demo : labels.open}
+        </button>
+      )}
+      {p.link && !p.direct && <a className="btn ghost sm" href={p.link} target="_blank" rel="noreferrer"><Icon name="external" size={16} /> {labels.live}</a>}
       {p.repo && <a className="btn ghost sm" href={p.repo} target="_blank" rel="noreferrer"><Icon name="github" size={16} /> {labels.code}</a>}
       {p.cta && <a className="btn ghost sm" href={p.cta.href}>{p.cta.label} <Icon name="arrow" size={16} /></a>}
     </div>
@@ -44,11 +56,11 @@ function Featured({ p, labels, catLabel, onOpen }) {
   return (
     <Reveal className="feat-wrap">
       <SpotCard className="card feat" tilt={false}>
-        <button ref={ref} className="feat-media" onClick={() => onOpen(p)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} data-cursor={p.video ? labels.demo : labels.open}>
+        <MediaTrigger innerRef={ref} p={p} className="feat-media" onOpen={onOpen} labels={labels} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
           <Media p={p} play={seen || hover} />
           <span className="feat-flag"><Icon name="chart" size={14} /> {labels.featured} · {catLabel}</span>
           {p.video && <span className="play big"><Icon name="play" size={26} /></span>}
-        </button>
+        </MediaTrigger>
         <div className="feat-body">
           <div className="feat-left">
             <div className="pc-meta">
@@ -87,12 +99,13 @@ function ProjectCard({ p, labels, catLabel, onOpen, i }) {
   const [hover, setHover] = useState(false)
   return (
     <SpotCard className="card pc" style={{ animationDelay: `${i * 80}ms` }}>
-      <button className="pc-media" onClick={() => onOpen(p)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} data-cursor={p.video ? labels.demo : labels.open}>
+      <MediaTrigger p={p} className="pc-media" onOpen={onOpen} labels={labels} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
         <Media p={p} play={hover} />
         <span className="status-pill">{p.status}</span>
         <span className="cat-chip">{catLabel}</span>
         {p.video && <span className="play"><Icon name="play" size={20} /></span>}
-      </button>
+        {p.direct && <span className="play"><Icon name="external" size={18} /></span>}
+      </MediaTrigger>
       <div className="pc-body">
         {p.badge && <span className="badge-pill static">{p.badge}</span>}
         <p className="pc-type">{p.type}</p>
