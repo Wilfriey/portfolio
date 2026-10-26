@@ -31,10 +31,10 @@ function Head({ idx, label, title, intro }) {
 
 const statValue = (s) => (s.auto === 'projects' ? projects.items.length : s.value)
 
-function Counter({ value, suffix = '', plain }) {
+function Counter({ value, suffix = '', plain, pad }) {
   const [ref, seen] = useInView()
   const v = useCountUp(value, seen)
-  return <strong ref={ref}>{plain ? v : v}{suffix}</strong>
+  return <strong ref={ref}>{pad ? String(v).padStart(pad, '0') : v}{suffix}</strong>
 }
 
 function Marquee({ items, reverse, ribbon }) {
@@ -174,7 +174,7 @@ export default function App() {
               <div className="hero-stats">
                 {hero.stats.map((s, i) => (
                   <div key={i}>
-                    {s.auto ? <Counter value={statValue(s)} suffix={s.suffix} /> : <strong>{s.text}</strong>}
+                    {s.auto ? <Counter value={statValue(s)} suffix={s.suffix} pad={s.pad} /> : <strong>{s.text}</strong>}
                     <span>{s.label[lang]}</span>
                   </div>
                 ))}
@@ -228,7 +228,7 @@ export default function App() {
               {about.stats.map((s, i) => (
                 <Reveal key={i} className={`b-stat s${i + 1}`} delay={120 + i * 70}>
                   <SpotCard className="card pad stat">
-                    <Counter value={statValue(s)} suffix={s.suffix} />
+                    <Counter value={statValue(s)} suffix={s.suffix} pad={s.pad} />
                     <span>{s.label[lang]}</span>
                   </SpotCard>
                 </Reveal>
@@ -276,7 +276,7 @@ export default function App() {
             <div className="oryvo-stats">
               {oryvo.stats.map((s, i) => (
                 <Reveal key={i} delay={i * 80} className="o-stat">
-                  {s.plain ? <strong>{s.value}</strong> : <Counter value={statValue(s)} suffix={s.suffix} />}
+                  {s.plain ? <strong>{s.value}</strong> : <Counter value={statValue(s)} suffix={s.suffix} pad={s.pad} />}
                   <span>{s.label[lang]}</span>
                 </Reveal>
               ))}
