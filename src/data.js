@@ -13,7 +13,7 @@ export const profile = {
   initials: 'NW',
   role: { fr: 'Fondateur d’ORYVO · Étudiant Bachelor 3 Informatique & IA', en: 'Founder of ORYVO · Bachelor 3 Computer Science & AI Student' },
   school: 'KEYCE',
-  location: 'À compléter', // ex: 'Douala, Cameroun'
+  location: '', // ex: 'Douala, Cameroun'
   badge: { fr: 'Disponible pour de nouveaux projets', en: 'Available for new projects' },
 
   // ---- PHOTOS (chemins vers /public) ----
@@ -76,13 +76,9 @@ export const about = {
   tag: 'Founder · AI · Dev', // étiquette sur la photo
   paragraphs: {
     fr: [
-      'Je suis en Bachelor 3 Informatique & Intelligence Artificielle à KEYCE, et le fondateur d’ORYVO. Je mets en pratique ce que j’apprends en construisant de vrais produits pour de vrais utilisateurs.',
-      'À compléter : votre histoire — ce qui vous a poussé à créer ORYVO, votre vision de la tech et l’impact que vous visez.',
-    ],
+      'Je suis en Bachelor 3 Informatique & Intelligence Artificielle à KEYCE, et le fondateur d’ORYVO. Je mets en pratique ce que j’apprends en construisant de vrais produits pour de vrais utilisateurs.',    ],
     en: [
-      'I am a 3rd-year Bachelor student in Computer Science & AI at KEYCE, and the founder of ORYVO. I put what I learn into practice by building real products for real users.',
-      'To complete: your story — what pushed you to create ORYVO, your vision of tech and the impact you aim for.',
-    ],
+      'I am a 3rd-year Bachelor student in Computer Science & AI at KEYCE, and the founder of ORYVO. I put what I learn into practice by building real products for real users.',    ],
   },
   stats: [
     { value: 3, suffix: '', label: { fr: 'année de Bachelor Info & IA', en: 'Bachelor year, CS & AI' } },
@@ -106,10 +102,6 @@ export const oryvo = {
     fr: 'ORYVO est une startup d’innovation technologique. Nous concevons nos propres produits et nous accompagnons les entrepreneurs dans la réalisation des leurs, du cadrage à la mise en ligne.',
     en: 'ORYVO is a technology innovation startup. We build our own products and help entrepreneurs bring theirs to life, from scoping to going live.',
   },
-  extra: {
-    fr: 'À compléter : mission, vision, année de création, équipe, positionnement.',
-    en: 'To complete: mission, vision, founding year, team, positioning.',
-  },
   pillars: [
     { icon: 'rocket', title: { fr: 'Nos produits', en: 'Our products' }, text: { fr: 'Des solutions technologiques conçues, développées et déployées en interne.', en: 'Technology solutions designed, built and deployed in-house.' } },
     { icon: 'compass', title: { fr: 'Accompagnement', en: 'Guidance' }, text: { fr: 'Un partenaire technique pour les entrepreneurs, de l’idée au lancement.', en: 'A technical partner for entrepreneurs, from idea to launch.' } },
@@ -118,7 +110,7 @@ export const oryvo = {
   stats: [
     { auto: 'projects', suffix: '', label: { fr: 'projets réalisés', en: 'projects delivered' } },
     { value: 3, pad: 2, suffix: '', label: { fr: 'entrepreneurs accompagnés', en: 'entrepreneurs supported' } },
-    { value: 2026, suffix: '', label: { fr: 'année de création (à vérifier)', en: 'founding year (to check)' }, plain: true },
+    { value: 2026, suffix: '', label: { fr: 'année de création', en: 'founding year' }, plain: true },
   ],
 }
 
@@ -566,9 +558,7 @@ export const journey = {
     // { name: 'Nom de la certification', org: 'Organisme', year: '2026' },
   ],
   languages: [
-    { name: { fr: 'Français', en: 'French' }, level: { fr: 'Courant', en: 'Fluent' } },
-    { name: { fr: 'Anglais', en: 'English' }, level: { fr: 'À compléter', en: 'To complete' } },
-  ],
+    { name: { fr: 'Français', en: 'French' }, level: { fr: 'Courant', en: 'Fluent' } },  ],
 }
 
 // enabled: true quand vous aurez de vrais témoignages (section masquée sinon)

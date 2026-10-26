@@ -222,7 +222,7 @@ export default function App() {
                   <h3>{profile.name}</h3>
                   <p className="role">{profile.role[lang]}</p>
                   {about.paragraphs[lang].map((p, i) => <p key={i}>{p}</p>)}
-                  <p className="loc"><Icon name="support" size={16} /> {profile.location}</p>
+                  {profile.location && <p className="loc"><Icon name="support" size={16} /> {profile.location}</p>}
                 </SpotCard>
               </Reveal>
               {about.stats.map((s, i) => (
@@ -258,7 +258,7 @@ export default function App() {
                     {profile.oryvoLogo ? <img src={profile.oryvoLogo} alt="ORYVO" /> : <span>ORYVO</span>}
                   </div>
                   <p className="big-text">{oryvo.text[lang]}</p>
-                  <p className="todo">{oryvo.extra[lang]}</p>
+                  {oryvo.extra && <p className="todo">{oryvo.extra[lang]}</p>}
                   {website && <a className="btn lime sm" href={website} target="_blank" rel="noreferrer">{t.visit} <Icon name="arrow" size={16} /></a>}
                 </SpotCard>
               </Reveal>
