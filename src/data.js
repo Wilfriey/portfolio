@@ -109,7 +109,7 @@ export const oryvo = {
   ],
   stats: [
     { auto: 'projects', suffix: '', label: { fr: 'projets réalisés', en: 'projects delivered' } },
-    { value: 3, pad: 2, suffix: '', label: { fr: 'entrepreneurs accompagnés', en: 'entrepreneurs supported' } },
+    { value: 5, pad: 2, suffix: '', label: { fr: 'entrepreneurs accompagnés', en: 'entrepreneurs supported' } },
     { value: 2026, suffix: '', label: { fr: 'année de création', en: 'founding year' }, plain: true },
   ],
 }
